@@ -15,8 +15,12 @@ const index = () => {
         <NavItem>
           <Link to='/Opportunities'>Opportunities</Link>
         </NavItem>
-        <NavItem>Customers</NavItem>
-        <NavItem>Products</NavItem>
+        <NavItem>
+          <Link to='/Customers'>Customers</Link>
+        </NavItem>
+        <NavItem>
+          <Link to='/Products'>Products</Link>
+        </NavItem>
       </ul>
     </Navbar>
   )
