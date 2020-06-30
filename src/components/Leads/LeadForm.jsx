@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 import { v4 as uuidv4 } from "uuid";
 
 const LeadForm = () => {
-  const [leads, setLeads] = useContext(LeadContext)
+  const [leads, setLeads, addLead] = useContext(LeadContext)
   //const { addLead, postsPerPage, totalPosts } = leadContext;
 
 
@@ -29,6 +29,7 @@ const LeadForm = () => {
 
   const handleOnSubmit = e => {
     e.preventDefault()
+    addLead()
     // https://stackoverflow.com/questions/55495198/reacts-setstate-method-with-prevstate-argument
     // https://stackoverflow.com/questions/53203864/react-functional-setstate-previous-state-different-from-new-updated-value
     // 1. copy the snapshot of the current state with spread operator

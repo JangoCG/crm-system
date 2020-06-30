@@ -2,25 +2,12 @@ import React, {useState, createContext, useEffect} from 'react'
 import axios from 'axios'
 
 export const LeadContext = createContext()
-
+// ich schwall jetzt hier ein comment bla bla
 export const LeadProvider = props => {
-  const [leads, setLeads] = useState([
-    {
-      firstName: 'Urlich',
-      lastName: 'Bühler',
-      email: 'u.bühler@it-sec.com',
-      id: '123'
-    },
-    {
-      firstName: 'Markus',
-      lastName: 'Göltenboth',
-      email: 'm.göltenboth@erbsen.com',
-      id: '234'
-    }
-  ])
+  const [leads, setLeads] = useState([])
   
+  // Fetch Leads from API and load them in state
   useEffect(  () => {
-    // get leads and setState
     const getLeads = () => axios.get('http://localhost:5000');
     
     const setLeadState = async () => {
@@ -34,8 +21,17 @@ export const LeadProvider = props => {
     setLeadState()
   },[])
 
-  return (
-    <LeadContext.Provider value={[leads, setLeads]}>
+   const addLead = async (lead) => {
+    try {
+      const res = await axios.post('http://localhost:5000/addLead');
+      console.log(res);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+return (
+    <LeadContext.Provider value={[leads, setLeads, addLead]}>
       {props.children}
     </LeadContext.Provider>
   )
