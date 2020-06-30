@@ -1,6 +1,6 @@
 // this file initialises the context
-import { createContext } from 'react'
+import { createContext } from 'react';
 
-const leadContext = createContext()
+const leadContext = createContext();
 
-export default leadContext
+export default leadContext;

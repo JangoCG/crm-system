@@ -1,1 +1,2 @@
-export const TEST_TYPE = 'TEST_TYPE'
+export const ADD_LEAD = 'ADD_LEAD';
+export const GET_LEADS = 'GET_LEADs';

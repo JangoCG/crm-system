@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     --color-primary: rgba(52, 69, 99, 1);
     --color-primary-lt: rgba(52, 69, 99, 0.8);
     --font-primary: 'Noto Sans JP', sans-serif; 
+    table, th,td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
   }
 
   

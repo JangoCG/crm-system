@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 
 export const Form = styled.form`
   display: block;
+  width: fixed;
 `
 
 export const Label = styled.label`
