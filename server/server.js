@@ -14,14 +14,14 @@ app.use(express.json({ extended: false }));
 
 // @route   GET
 // @desc    Schwall
-app.get('/', async (req, res) => {
+app.get('/api/leads', async (req, res) => {
   const fetchLeads = await Lead.find();
   res.send(fetchLeads);
 });
 
 // @route   POST
 // @desc    Add lead
-app.post('/addLead', async (req, res) => {
+app.post('/api/leads', async (req, res) => {
   console.log(req);
   let lead = new Lead({
     firstName: req.body.firstName,

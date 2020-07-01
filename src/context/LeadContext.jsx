@@ -8,7 +8,7 @@ export const LeadProvider = props => {
   
   // Fetch Leads from API and load them in state
   useEffect(  () => {
-    const getLeads = () => axios.get('http://localhost:5000');
+    const getLeads = () => axios.get('/api/leads');
     
     const setLeadState = async () => {
       try {
@@ -23,7 +23,10 @@ export const LeadProvider = props => {
 
    const addLead = async (lead) => {
     try {
-      const res = await axios.post('http://localhost:5000/addLead');
+      const body = {
+        firstName: 'hi from react'
+      }
+      const res = await axios.post('api/leads', body);
       console.log(res);
     } catch (err) {
       console.error(err);
