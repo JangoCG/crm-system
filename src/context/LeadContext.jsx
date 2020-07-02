@@ -6,6 +6,16 @@ export const LeadContext = createContext()
 export const LeadProvider = props => {
   const [leads, setLeads] = useState([])
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = leads.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   // Fetch Leads from API and load them in state
     const getleads = () => axios.get('/api/leads');
 
@@ -13,7 +23,6 @@ export const LeadProvider = props => {
       try {
         setLeads([])
         const res = await getleads()
-        console.log(res)
         res.data.map(lead => setLeads(prevstate => [...prevstate, lead]))
       } catch (err) {
         console.error(err)
@@ -40,8 +49,16 @@ export const LeadProvider = props => {
     }
   };
 
+  const totalPosts = leads.length
 return (
-    <LeadContext.Provider value={[leads, setLeads, addLead]}>
+    <LeadContext.Provider value={[
+      currentPosts,
+      setLeads,
+      addLead,
+      postsPerPage,
+      totalPosts,
+      paginate
+      ]}>
       {props.children}
     </LeadContext.Provider>
   )

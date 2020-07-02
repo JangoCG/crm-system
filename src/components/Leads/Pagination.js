@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import leadContext from '../../context/lead/leadContext';
+import { LeadContext } from '../../context/LeadContext';
 const Pagination = () => {
-  const LeadContext = useContext(leadContext);
-  const { postsPerPage, totalPosts, paginate } = LeadContext;
+  const [postsPerPage, totalPosts, paginate] = useContext(LeadContext);
+  // Calculate the page numbers
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);

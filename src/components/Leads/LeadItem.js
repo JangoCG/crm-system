@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import { LeadContext } from '../../context/LeadContext';
 
 const LeadItem = () => {
-  const [leads, setLeads] = useContext(LeadContext);
+  const [currentPosts, setLeads] = useContext(LeadContext);
   //const { leads, posts, getLeads } = leadContext;
 
   return (
@@ -19,7 +19,7 @@ const LeadItem = () => {
           </tr>
         </thead>
         <tbody>
-          {leads.map(({ _id, firstName, lastName, email }) => (
+          {currentPosts.map(({ _id, firstName, lastName, email }) => (
             <tr key={_id}>
               <td key={_id + 1}>{_id}</td>
               <td key={_id + 2}>{firstName}</td>

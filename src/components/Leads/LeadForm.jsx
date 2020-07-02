@@ -27,8 +27,14 @@ const LeadForm = () => {
     setEmail(e.target.value)
   }
 
+  const validateInput = (firstName, lastName, email) => {
+    if(firstName.length <= 0) console.error("Please enter a first name")
+    else if(lastName.length <= 0 ) console.error('Please enter a valid last name')
+    else if(email.length <= 0) console.error('Please enter a valid email')
+  }
   const handleOnSubmit = e => {
     e.preventDefault()
+    validateInput(firstName, lastName, email)
       
     addLead(firstName, lastName, email)
     // https://stackoverflow.com/questions/55495198/reacts-setstate-method-with-prevstate-argument
@@ -42,8 +48,7 @@ const LeadForm = () => {
   }
   return (
     <Wrapper>
-      <div className="container nt-5">
-        <h1 className="text-primary-mb3">Form</h1>
+      <div className="container mt-5">
         <Form onSubmit={handleOnSubmit}>
           <Label style={{ display: "block" }}>First Name</Label>
           <Input
@@ -73,7 +78,7 @@ const LeadForm = () => {
         </Form>
         <LeadItem></LeadItem>
       </div>
-      {/* <Pagination /> */}
+       <Pagination />
     </Wrapper>
   );
 };
