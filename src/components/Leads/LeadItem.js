@@ -19,11 +19,12 @@ const LeadItem = () => {
           </tr>
         </thead>
         <tbody>
-          {leads.map((post, index) => (
-            <tr key={index}>
-              <td key={index + 1}>{post.id}</td>
-              <td key={index + 2}>{post.firstName}</td>
-              <td key={index + 3}>{post.lastName}</td>
+          {leads.map(({ _id, firstName, lastName, email }) => (
+            <tr key={_id}>
+              <td key={_id + 1}>{_id}</td>
+              <td key={_id + 2}>{firstName}</td>
+              <td key={_id + 3}>{lastName}</td>
+              <td key={_id + 4}>{email}</td>
             </tr>
           ))}
         </tbody>

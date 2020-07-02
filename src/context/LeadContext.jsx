@@ -5,29 +5,36 @@ export const LeadContext = createContext()
 // ich schwall jetzt hier ein comment bla bla
 export const LeadProvider = props => {
   const [leads, setLeads] = useState([])
-  
+
   // Fetch Leads from API and load them in state
-  useEffect(  () => {
-    const getLeads = () => axios.get('/api/leads');
-    
+    const getleads = () => axios.get('/api/leads');
+
     const setLeadState = async () => {
       try {
-        const res = await getLeads()
-        res.data.map(lead => setLeads(prevState => [...prevState, lead]))
+        setLeads([])
+        const res = await getleads()
+        console.log(res)
+        res.data.map(lead => setLeads(prevstate => [...prevstate, lead]))
       } catch (err) {
         console.error(err)
       }
     }
-    setLeadState()
+   useEffect(  () => {
+     setLeadState()
   },[])
 
-   const addLead = async (lead) => {
+  // addLead function is defined in the context and passed to rest
+  // of the application through the provider
+   const addLead = async (firstName, lastName, email) => {
     try {
       const body = {
-        firstName: 'hi from react'
+        firstName,
+        lastName,
+        email
       }
       const res = await axios.post('api/leads', body);
-      console.log(res);
+      //setLeads([])
+      setLeadState()
     } catch (err) {
       console.error(err);
     }

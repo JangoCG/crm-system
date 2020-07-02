@@ -22,7 +22,8 @@ app.get('/api/leads', async (req, res) => {
 // @route   POST
 // @desc    Add lead
 app.post('/api/leads', async (req, res) => {
-  console.log(req);
+  console.log('body vom server');
+  console.log(req.body);
   let lead = new Lead({
     firstName: req.body.firstName,
     lastName: req.body.lastName,

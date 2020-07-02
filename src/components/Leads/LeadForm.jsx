@@ -29,13 +29,14 @@ const LeadForm = () => {
 
   const handleOnSubmit = e => {
     e.preventDefault()
-    addLead()
+      
+    addLead(firstName, lastName, email)
     // https://stackoverflow.com/questions/55495198/reacts-setstate-method-with-prevstate-argument
     // https://stackoverflow.com/questions/53203864/react-functional-setstate-previous-state-different-from-new-updated-value
     // 1. copy the snapshot of the current state with spread operator
     // 2. add a new object to the state after the comma
     // returning a array because lead state is an array of objects e.g useState([{}])
-    setLeads(prevLeads => [...prevLeads, { firstName,lastName, email }] )
+    //setLeads(prevLeads => [...prevLeads, { firstName,lastName, email }] )
 
 
   }
